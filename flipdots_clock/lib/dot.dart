@@ -33,6 +33,7 @@ class Dot {
         delay: x * 0.01,
         duration: 0.8,
         halfSpin: true,
+        spinDirection: SpinWidgetSpinDirection.right,
         frontColor: active ? colors.frontside : colors.backside,
         backColor: active ? colors.backside : colors.frontside,
       );
