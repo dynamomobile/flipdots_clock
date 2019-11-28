@@ -118,7 +118,8 @@ class _DigitalClockState extends State<DigitalClock> {
   void layoutDisplay(DateTime dateTime) {
     final _dotFont = DotFont8x8();
 
-    final date = DateFormat.Md().format(dateTime); // Short date with device locale
+    final date =
+        DateFormat.Md().format(dateTime); // Short date with device locale
     final hour =
         DateFormat(widget.model.is24HourFormat ? 'HH' : 'hh').format(dateTime);
     final minute = DateFormat('mm').format(dateTime);

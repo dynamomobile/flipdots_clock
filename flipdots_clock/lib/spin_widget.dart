@@ -81,8 +81,8 @@ class _SpinWidgetState extends State<SpinWidget> with TickerProviderStateMixin {
                   0),
               _angle)
           ..translate(-_itemSize.width, -_itemSize.height),
-          // Child widget disabled for this project. If you want to use this code,
-          // uncomment below part to enable the child widget.
+        // Child widget disabled for this project. If you want to use this code,
+        // uncomment below part to enable the child widget.
         // child: isBackSide
         //     ? Container(
         //         width: _itemSize.width * 2,
