@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'spin_widget.dart';
 
+/// Colors used for a dot when creating the spinning widget.
 class DotColors {
   DotColors(this.frontside, this.backside);
 
@@ -13,6 +14,7 @@ class DotColors {
   Color backside;
 }
 
+/// Single dot that keeps track of current and previous state for animation update.
 class Dot {
   Dot({this.x, this.y});
 

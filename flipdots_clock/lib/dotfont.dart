@@ -2,15 +2,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-class DotFont {
+import 'package:flutter/foundation.dart';
+
+/// Abstract class for the bitmap font. Draw a character by supply a callback for updating individual bits.
+abstract class DotFont {
   DotFont(this.columns, this.rows);
 
   final columns;
   final rows;
 
-  List<String> charData(String char) {
-    return null;
-  }
+  @protected
+  List<String> charData(String char);
 
   void _drawCharData(List<String> charData, int offsetX, int offsetY,
       void update(int x, int y, bool active)) {

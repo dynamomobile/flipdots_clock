@@ -12,6 +12,7 @@ enum SpinWidgetSpinDirection {
   right,
 }
 
+/// Spin widget. Spins a widget in 3D, full 360 or 180 degrees.
 class SpinWidget extends StatefulWidget {
   SpinWidget({
     Key key,
@@ -80,6 +81,8 @@ class _SpinWidgetState extends State<SpinWidget> with TickerProviderStateMixin {
                   0),
               _angle)
           ..translate(-_itemSize.width, -_itemSize.height),
+          // Child widget disabled for this project. If you want to use this code,
+          // uncomment below part to enable the child widget.
         // child: isBackSide
         //     ? Container(
         //         width: _itemSize.width * 2,

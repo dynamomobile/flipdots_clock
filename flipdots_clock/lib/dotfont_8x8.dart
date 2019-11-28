@@ -4,6 +4,7 @@
 
 import 'dotfont.dart';
 
+/// This is an 8x8 bitmap font.
 class DotFont8x8 extends DotFont {
   DotFont8x8() : super(8, 8); // Super8 :)
 

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clock_helper/model.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/intl_standalone.dart';
 
 import 'dot.dart';
 import 'dot_display.dart';
@@ -38,8 +39,9 @@ class _DigitalClockState extends State<DigitalClock> {
   @override
   void initState() {
     super.initState();
+    initializeDateFormatting(); // Loads other locales for the date formatter
+    findSystemLocale().then((_) {}); // Get device locale for the date formatter
     _display = DotDisplay(columns: _columns, rows: _rows);
-    initializeDateFormatting();
     widget.model.addListener(_updateModel);
     _updateTime();
     _updateModel();
@@ -116,7 +118,7 @@ class _DigitalClockState extends State<DigitalClock> {
   void layoutDisplay(DateTime dateTime) {
     final _dotFont = DotFont8x8();
 
-    final date = DateFormat.Md().format(dateTime);
+    final date = DateFormat.Md().format(dateTime); // Short date with device locale
     final hour =
         DateFormat(widget.model.is24HourFormat ? 'HH' : 'hh').format(dateTime);
     final minute = DateFormat('mm').format(dateTime);

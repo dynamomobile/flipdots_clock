@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'dot.dart';
 import 'dotfont.dart';
 
+/// Display colors, for the background and the dots.
 class DotDisplayTheme {
   DotDisplayTheme({this.background, this.dotColors});
 
@@ -14,6 +15,7 @@ class DotDisplayTheme {
   DotColors dotColors;
 }
 
+/// Matrix of dots that makes the display.
 class DotDisplay {
   DotDisplay({this.columns, this.rows})
       : _grid = List.generate(columns,
@@ -45,6 +47,7 @@ class DotDisplay {
     return null;
   }
 
+  /// Draw a string with a bitmap font. Returns the width drawn.
   int drawString(DotFont dotFont, int offsetX, int offsetY, String string) {
     var width = 0;
     string.split('').forEach((char) {
