@@ -1,3 +1,7 @@
+// Copyright 2019 DYNAMO Consulting AB. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dotfont.dart';
 
 class DotFont8x8 extends DotFont {
