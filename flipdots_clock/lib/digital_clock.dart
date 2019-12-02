@@ -23,10 +23,11 @@ class DigitalClock extends StatefulWidget {
   _DigitalClockState createState() => _DigitalClockState();
 }
 
-class _DigitalClockState extends State<DigitalClock> {
+class _DigitalClockState extends State<DigitalClock> with TickerProviderStateMixin {
   Timer _timer;
 
   DotDisplay _display;
+  AnimationController _animationController;
 
   int get _columns {
     return 5 * 8; // 5 chars with 8 pixel width
@@ -45,6 +46,10 @@ class _DigitalClockState extends State<DigitalClock> {
     widget.model.addListener(_updateModel);
     _updateTime();
     _updateModel();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
   }
 
   @override
@@ -75,6 +80,9 @@ class _DigitalClockState extends State<DigitalClock> {
       var dateTime = DateTime.now();
 
       layoutDisplay(dateTime);
+
+      _animationController?.reset();
+      _animationController?.forward();
 
       _timer = Timer(
         Duration(seconds: 1) - Duration(milliseconds: dateTime.millisecond),
@@ -108,7 +116,7 @@ class _DigitalClockState extends State<DigitalClock> {
           children: List.generate(_columns * _rows, (index) {
             final x = index % _columns;
             final y = (index / _columns).floor();
-            return _display.dot(x, y)?.widget(colors.dotColors);
+            return _display.dot(x, y)?.widget(colors.dotColors, _animationController);
           }),
         ),
       ),

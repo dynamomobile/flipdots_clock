@@ -27,7 +27,7 @@ class Dot {
     active = !active;
   }
 
-  Widget widget(DotColors colors) {
+  Widget widget(DotColors colors, Listenable listenable) {
     if (active == _wasActive) {
       return Container(
         color: active ? colors.backside : colors.frontside,
@@ -36,8 +36,9 @@ class Dot {
       _wasActive = active;
       return SpinWidget(
         key: UniqueKey(),
-        delay: x * 0.01,
-        duration: 0.8,
+        listenable: listenable,
+        begin: 0.012 * x,
+        end: 1.0,
         halfSpin: true,
         spinDirection: SpinWidgetSpinDirection.right,
         frontColor: active ? colors.frontside : colors.backside,
