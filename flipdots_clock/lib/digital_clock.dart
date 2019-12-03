@@ -23,7 +23,8 @@ class DigitalClock extends StatefulWidget {
   _DigitalClockState createState() => _DigitalClockState();
 }
 
-class _DigitalClockState extends State<DigitalClock> with TickerProviderStateMixin {
+class _DigitalClockState extends State<DigitalClock>
+    with TickerProviderStateMixin {
   Timer _timer;
 
   DotDisplay _display;
@@ -116,7 +117,9 @@ class _DigitalClockState extends State<DigitalClock> with TickerProviderStateMix
           children: List.generate(_columns * _rows, (index) {
             final x = index % _columns;
             final y = (index / _columns).floor();
-            return _display.dot(x, y)?.widget(colors.dotColors, _animationController);
+            return _display
+                .dot(x, y)
+                ?.widget(colors.dotColors, _animationController);
           }),
         ),
       ),
