@@ -109,19 +109,21 @@ class _DigitalClockState extends State<DigitalClock>
         : _darkTheme;
     return Container(
       color: colors.background,
-      child: IgnorePointer(
-        child: GridView.count(
-          crossAxisCount: _columns,
-          mainAxisSpacing: 1,
-          crossAxisSpacing: 1,
-          children: List.generate(_columns * _rows, (index) {
-            final x = index % _columns;
-            final y = (index / _columns).floor();
-            return _display
-                .dot(x, y)
-                ?.widget(colors.dotColors, _animationController);
-          }),
-        ),
+      child: Table(
+        children: List.generate(_rows, (y) {
+          return TableRow(
+              children: List.generate(_columns, (x) {
+            return Padding(
+              padding: EdgeInsets.only(right: 1.0, bottom: 1.0),
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: _display
+                    .dot(x, y)
+                    ?.widget(colors.dotColors, _animationController),
+              ),
+            );
+          }));
+        }),
       ),
     );
   }
